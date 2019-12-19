@@ -1,0 +1,51 @@
+{
+    "name": "Apollo",
+    "description": "<p>Apollo is an incrementally-adoptable data stack that manages the flow of data between clients and backends. Based on GraphQL, it gives you a principled, unified, and scalable API for developing modern apps on top of services.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/apollo-stack.png",
+    "tags": [
+        "api service provider",
+        "data",
+        "databases",
+        "graphql",
+        "have api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/apollo\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Apollo",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/apollo-stack.png",
+            "humanURL": "https:\/\/www.apollographql.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apollo-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "https:\/\/medium.com\/apollo-stack\/"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/apollostack"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/apollographql"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/www.apollographql.com\/"
+        }
+    ]
+}
