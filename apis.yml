@@ -1,0 +1,36 @@
+aid: apollo
+name: Apollo
+description: >-
+  Apollo provides a GraphQL platform with client libraries, server framework, and code generation tools for building and consuming GraphQL APIs.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - SDKs
+  - Code Generation
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apollo/refs/heads/main/apis.yml
+created: '2026-03-25'
+modified: '2026-03-25'
+specificationVersion: '0.19'
+apis:
+  - aid: apollo:apollo
+    name: Apollo
+    description: >-
+      Apollo provides a GraphQL platform with client libraries, server framework, and code generation tools for building and consuming GraphQL APIs.
+    humanURL: https://www.apollographql.com
+    tags:
+      - SDKs
+      - Code Generation
+    properties:
+      - type: Documentation
+        url: https://www.apollographql.com/docs
+common:
+  - type: Website
+    url: https://www.apollographql.com
+  - type: Documentation
+    url: https://www.apollographql.com/docs
+  - type: GitHub Organization
+    url: https://github.com/apollographql
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
