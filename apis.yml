@@ -8,10 +8,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - SDKs
-  - GraphQL
   - Code Generation
   - Federation
+  - GraphQL
+  - SDKs
 url: >-
   https://raw.githubusercontent.com/api-evangelist/apollo/refs/heads/main/apis.yml
 created: '2026-03-25'
@@ -26,9 +26,9 @@ apis:
       with integrations for React, Vue, Angular, and more.
     humanURL: https://www.apollographql.com/apollo-client
     tags:
-      - SDKs
-      - GraphQL
       - Client Libraries
+      - GraphQL
+      - SDKs
     properties:
       - type: Documentation
         url: https://www.apollographql.com/docs/react/
