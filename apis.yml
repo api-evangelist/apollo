@@ -53,6 +53,8 @@ apis:
         url: https://docs.apollo.io/reference/rate-limits
       - type: Tutorials
         url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+      - url: openapi/apollo-openapi.yml
+        type: OpenAPI
   - aid: apollo:apollo-client
     name: Apollo Client
     description: >-
