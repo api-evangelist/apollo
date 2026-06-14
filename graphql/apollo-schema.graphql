@@ -1,0 +1,969 @@
+"""
+Apollo.io GraphQL Schema
+B2B sales intelligence and engagement platform.
+Endpoint: https://api.apollo.io/api/v1/graphql
+"""
+
+# ─────────────────────────────────────────────
+# Scalars
+# ─────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar URL
+scalar EmailAddress
+
+# ─────────────────────────────────────────────
+# Pagination
+# ─────────────────────────────────────────────
+
+"""Cursor-based pagination metadata returned with list results."""
+type PageInfo {
+  totalCount: Int!
+  page: Int!
+  perPage: Int!
+  totalPages: Int!
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Contact Types
+# ─────────────────────────────────────────────
+
+"""A person in the Apollo contact database."""
+type Contact {
+  id: ID!
+  firstName: String
+  lastName: String
+  name: String
+  title: String
+  headline: String
+  linkedinUrl: URL
+  twitterUrl: URL
+  githubUrl: URL
+  facebookUrl: URL
+  city: String
+  state: String
+  country: String
+  photoUrl: URL
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  accountId: ID
+  organization: Organization
+  contactEmails: [ContactEmail!]!
+  contactPhones: [ContactPhone!]!
+  contactJobs: [ContactJob!]!
+  labels: [Label!]!
+  details: ContactDetails
+}
+
+"""Extended details for a contact record."""
+type ContactDetails {
+  seniority: String
+  departments: [String!]!
+  subdepartments: [String!]!
+  functions: [String!]!
+  emailStatus: String
+  emailUnsubscribed: Boolean!
+  emailBounced: Boolean!
+  phoneStatus: String
+  ownerId: ID
+  ownerName: String
+  stageName: String
+  lastActivityAt: DateTime
+  lastContactedAt: DateTime
+  accountStage: String
+  intent: JSON
+}
+
+"""A verified or predicted email address for a contact."""
+type ContactEmail {
+  id: ID!
+  email: EmailAddress!
+  emailStatus: String!
+  isPrimary: Boolean!
+  type: String
+  position: Int
+  verifiedAt: DateTime
+}
+
+"""A phone number associated with a contact."""
+type ContactPhone {
+  id: ID!
+  number: String!
+  type: String
+  isPrimary: Boolean!
+  status: String
+  position: Int
+}
+
+"""A job history entry for a contact."""
+type ContactJob {
+  id: ID!
+  title: String
+  organizationId: ID
+  organizationName: String
+  startDate: String
+  endDate: String
+  current: Boolean!
+  description: String
+}
+
+# ─────────────────────────────────────────────
+# Organization Types
+# ─────────────────────────────────────────────
+
+"""A company or organization in the Apollo database."""
+type Organization {
+  id: ID!
+  name: String!
+  websiteDomain: String
+  websiteUrl: URL
+  blogUrl: URL
+  linkedinUrl: URL
+  twitterUrl: URL
+  facebookUrl: URL
+  crunchbaseUrl: URL
+  city: String
+  state: String
+  country: String
+  postalCode: String
+  streetAddress: String
+  phone: String
+  foundedYear: Int
+  logoUrl: URL
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  size: OrgSize
+  industry: OrgIndustry
+  keywords: [OrgKeyword!]!
+  technologies: [OrgTechnology!]!
+  funding: OrgFunding
+  details: OrganizationDetails
+}
+
+"""Extended details for an organization."""
+type OrganizationDetails {
+  description: String
+  totalEmployees: Int
+  estimatedAnnualRevenue: String
+  revenueRange: String
+  alexa_ranking: Int
+  seoDescription: String
+  shortDescription: String
+  tags: [String!]!
+  subindustry: String
+  subindustryList: [String!]!
+  accountId: ID
+  intentStrengths: JSON
+  showIntent: Boolean
+}
+
+"""Employee count range bucket for an organization."""
+type OrgSize {
+  label: String!
+  min: Int
+  max: Int
+}
+
+"""Primary and sub-industry classification for an organization."""
+type OrgIndustry {
+  industry: String!
+  subIndustry: String
+  naicsCode: String
+  sicCode: String
+}
+
+"""A keyword or tag associated with an organization."""
+type OrgKeyword {
+  keyword: String!
+  category: String
+}
+
+"""A technology product used by an organization."""
+type OrgTechnology {
+  id: ID!
+  name: String!
+  category: String
+  uid: String
+}
+
+"""Funding summary for an organization."""
+type OrgFunding {
+  totalRaised: Float
+  currency: String
+  lastRoundType: String
+  lastRoundDate: String
+  numFundingRounds: Int
+  rounds: [FundingRound!]!
+}
+
+"""A single funding round for an organization."""
+type FundingRound {
+  id: ID!
+  roundType: String!
+  raisedAmount: Float
+  currency: String
+  announcedAt: String
+  leadInvestors: [String!]!
+  details: FundingDetails
+}
+
+"""Extended details for a funding round."""
+type FundingDetails {
+  description: String
+  sourceUrl: URL
+  allInvestors: [String!]!
+  postMoneyValuation: Float
+}
+
+# ─────────────────────────────────────────────
+# Sequence Types
+# ─────────────────────────────────────────────
+
+"""A multi-step outreach sequence."""
+type Sequence {
+  id: ID!
+  name: String!
+  active: Boolean!
+  archived: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userId: ID!
+  labelIds: [ID!]!
+  steps: [SequenceStep!]!
+  contacts: [SequenceContact!]!
+  details: SequenceDetails
+}
+
+"""Extended metadata for a sequence."""
+type SequenceDetails {
+  openRate: Float
+  replyRate: Float
+  bounceRate: Float
+  optOutRate: Float
+  totalContacts: Int
+  activeContacts: Int
+  finishedContacts: Int
+  stoppedContacts: Int
+  bouncedContacts: Int
+  deliveredCount: Int
+  openedCount: Int
+  repliedCount: Int
+}
+
+"""A single step within an outreach sequence."""
+type SequenceStep {
+  id: ID!
+  sequenceId: ID!
+  position: Int!
+  type: String!
+  waitDays: Int!
+  exactDatetime: DateTime
+  note: String
+  emailStep: EmailStep
+  taskStep: TaskStep
+  phoneStep: PhoneStep
+  linkedinStep: LinkedinStep
+}
+
+"""Contact enrollment record within a sequence."""
+type SequenceContact {
+  id: ID!
+  contactId: ID!
+  sequenceId: ID!
+  status: String!
+  currentStep: Int!
+  enrolledAt: DateTime
+  finishedAt: DateTime
+  stoppedAt: DateTime
+  bouncedAt: DateTime
+  repliedAt: DateTime
+}
+
+"""Email step configuration within a sequence."""
+type EmailStep {
+  id: ID!
+  subject: String
+  bodyText: String
+  bodyHtml: String
+  templateId: ID
+  fromEmail: EmailAddress
+  fromName: String
+  replyToEmail: EmailAddress
+  emailAccountId: ID
+}
+
+"""Manual task step within a sequence."""
+type TaskStep {
+  id: ID!
+  taskType: String!
+  note: String
+  priority: String
+}
+
+"""Phone call step within a sequence."""
+type PhoneStep {
+  id: ID!
+  script: String
+  priority: String
+}
+
+"""LinkedIn action step within a sequence."""
+type LinkedinStep {
+  id: ID!
+  actionType: String!
+  message: String
+  note: String
+}
+
+# ─────────────────────────────────────────────
+# Task Types
+# ─────────────────────────────────────────────
+
+"""A task assigned to a sales rep."""
+type Task {
+  id: ID!
+  contactId: ID
+  accountId: ID
+  userId: ID!
+  dueAt: DateTime
+  completedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  type: TaskType!
+  status: TaskStatus!
+  priority: String
+  note: String
+  contact: Contact
+  details: TaskDetails
+}
+
+"""Extended details for a task."""
+type TaskDetails {
+  sequenceId: ID
+  sequenceStepId: ID
+  opportunityId: ID
+  skippedAt: DateTime
+  skippedReason: String
+  outreachStatus: String
+}
+
+"""Categories of tasks."""
+enum TaskType {
+  EMAIL
+  CALL
+  LINKEDIN_SEND_MESSAGE
+  LINKEDIN_CONNECT
+  LINKEDIN_VIEW_PROFILE
+  LINKEDIN_INTERACT_WITH_POST
+  ACTION_ITEM
+}
+
+"""Lifecycle status of a task."""
+enum TaskStatus {
+  PENDING
+  COMPLETED
+  SKIPPED
+  SCHEDULED
+}
+
+# ─────────────────────────────────────────────
+# Opportunity Types
+# ─────────────────────────────────────────────
+
+"""A sales opportunity in the pipeline."""
+type Opportunity {
+  id: ID!
+  name: String!
+  accountId: ID
+  ownerId: ID!
+  amount: Float
+  currency: String
+  closeDate: String
+  stage: String
+  probability: Float
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contacts: [Contact!]!
+  details: OpportunityDetails
+}
+
+"""Extended details for an opportunity."""
+type OpportunityDetails {
+  description: String
+  type: String
+  leadSource: String
+  campaignId: ID
+  lostReason: String
+  nextStep: String
+  forecastCategory: String
+  expectedRevenue: Float
+  crmId: String
+  crmType: String
+  isWon: Boolean!
+  isClosed: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Account Types
+# ─────────────────────────────────────────────
+
+"""An account record linking an organization to your CRM."""
+type Account {
+  id: ID!
+  name: String!
+  domain: String
+  organizationId: ID
+  ownerId: ID
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contacts: [Contact!]!
+  opportunities: [Opportunity!]!
+  score: AccountScore
+  details: AccountDetails
+}
+
+"""Fit and intent scoring for an account."""
+type AccountScore {
+  fitScore: Int
+  intentScore: Int
+  overallScore: Int
+  fitGrade: String
+  intentGrade: String
+}
+
+"""Extended details for an account."""
+type AccountDetails {
+  industry: String
+  employeeCount: Int
+  annualRevenue: Float
+  city: String
+  state: String
+  country: String
+  phone: String
+  crmId: String
+  crmType: String
+  stageName: String
+  labelIds: [ID!]!
+  lastActivityAt: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Deal Types
+# ─────────────────────────────────────────────
+
+"""A deal record in the Apollo pipeline board."""
+type Deal {
+  id: ID!
+  name: String!
+  amount: Float
+  currency: String
+  closeDate: String
+  ownerId: ID!
+  accountId: ID
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  stage: DealStage!
+  contacts: [Contact!]!
+  details: DealDetails
+}
+
+"""Extended details for a deal."""
+type DealDetails {
+  description: String
+  probability: Float
+  forecastCategory: String
+  lostReason: String
+  nextStep: String
+  crmId: String
+  crmType: String
+  isWon: Boolean!
+  isClosed: Boolean!
+}
+
+"""A stage in the deal pipeline."""
+type DealStage {
+  id: ID!
+  name: String!
+  position: Int!
+  probability: Float
+  isClosed: Boolean!
+  isWon: Boolean!
+  teamId: ID
+}
+
+# ─────────────────────────────────────────────
+# User and Team Types
+# ─────────────────────────────────────────────
+
+"""A user within an Apollo organization account."""
+type User {
+  id: ID!
+  firstName: String
+  lastName: String
+  name: String
+  email: EmailAddress!
+  title: String
+  photoUrl: URL
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  teamId: ID
+  role: UserRole!
+  team: Team
+  details: UserDetails
+}
+
+"""Extended details for a user."""
+type UserDetails {
+  timezone: String
+  locale: String
+  lastSignInAt: DateTime
+  dailyEmailLimit: Int
+  emailAccountId: ID
+  linkedinAccountId: ID
+  isAdmin: Boolean!
+  isSuperAdmin: Boolean!
+  accountId: ID
+}
+
+"""Role assigned to a user."""
+type UserRole {
+  id: ID!
+  name: String!
+  permissions: [String!]!
+}
+
+"""A team within an Apollo organization."""
+type Team {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  members: [User!]!
+  details: TeamDetails
+}
+
+"""Extended details for a team."""
+type TeamDetails {
+  description: String
+  managerUserId: ID
+  memberCount: Int
+  emailDomains: [String!]!
+}
+
+# ─────────────────────────────────────────────
+# Email Template and Snippet Types
+# ─────────────────────────────────────────────
+
+"""A reusable email template."""
+type EmailerTemplate {
+  id: ID!
+  name: String!
+  subject: String
+  bodyText: String
+  bodyHtml: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userId: ID!
+  globallyUsed: Boolean!
+  archived: Boolean!
+  labelIds: [ID!]!
+  snippets: [SnippetDetails!]!
+}
+
+"""A personalization snippet embedded in templates."""
+type SnippetDetails {
+  id: ID!
+  name: String!
+  type: String!
+  value: String
+  description: String
+}
+
+# ─────────────────────────────────────────────
+# Label and Filter Types
+# ─────────────────────────────────────────────
+
+"""A label for organizing contacts, accounts, or templates."""
+type Label {
+  id: ID!
+  name: String!
+  color: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A saved filter definition."""
+type Filter {
+  id: ID!
+  name: String!
+  type: String!
+  definition: JSON!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userId: ID
+  shared: Boolean!
+}
+
+"""Input type for search filter parameters."""
+input SearchFilter {
+  q: String
+  personTitles: [String!]
+  personSeniorities: [String!]
+  personDepartments: [String!]
+  organizationIndustryTagIds: [String!]
+  organizationNumEmployeesRanges: [String!]
+  organizationLocations: [String!]
+  contactLocations: [String!]
+  technologies: [String!]
+  labelIds: [String!]
+  emailStatus: [String!]
+  page: Int
+  perPage: Int
+}
+
+# ─────────────────────────────────────────────
+# Search Result Types
+# ─────────────────────────────────────────────
+
+"""Top-level search results wrapper."""
+type SearchResults {
+  contacts: ContactResults
+  organizations: OrganizationResults
+  totalCount: Int!
+  pageInfo: PageInfo!
+}
+
+"""Paginated contact search results."""
+type ContactResults {
+  contacts: [Contact!]!
+  pageInfo: PageInfo!
+  breadcrumbs: JSON
+}
+
+"""Paginated organization search results."""
+type OrganizationResults {
+  organizations: [Organization!]!
+  pageInfo: PageInfo!
+  breadcrumbs: JSON
+}
+
+# ─────────────────────────────────────────────
+# Enrichment Types
+# ─────────────────────────────────────────────
+
+"""Result of an enrichment request for a single record."""
+type Enrichment {
+  id: ID!
+  type: String!
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contact: Contact
+  organization: Organization
+  details: EnrichmentDetails
+}
+
+"""Metadata about the enrichment operation."""
+type EnrichmentDetails {
+  creditsUsed: Int!
+  creditsRemaining: Int
+  matchType: String
+  confidence: Float
+  requestedFields: [String!]!
+  enrichedFields: [String!]!
+}
+
+"""Result of an email address verification request."""
+type EmailVerification {
+  email: EmailAddress!
+  status: String!
+  isDeliverable: Boolean!
+  isCatchAll: Boolean!
+  isDisposable: Boolean!
+  isRole: Boolean!
+  domain: String!
+  mxFound: Boolean!
+  mxRecord: String
+  verifiedAt: DateTime!
+}
+
+"""Result of a bulk enrichment job."""
+type BulkEnrichment {
+  id: ID!
+  status: String!
+  totalRecords: Int!
+  processedRecords: Int!
+  successfulRecords: Int!
+  failedRecords: Int!
+  creditsUsed: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  downloadUrl: URL
+}
+
+# ─────────────────────────────────────────────
+# Meeting Types
+# ─────────────────────────────────────────────
+
+"""A scheduled meeting linked to a contact or opportunity."""
+type Meeting {
+  id: ID!
+  title: String
+  startTime: DateTime!
+  endTime: DateTime!
+  contactId: ID
+  userId: ID!
+  opportunityId: ID
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: MeetingDetails
+}
+
+"""Extended details for a meeting."""
+type MeetingDetails {
+  description: String
+  location: String
+  conferenceUrl: URL
+  attendees: [String!]!
+  recordingUrl: URL
+  transcriptUrl: URL
+  aiSummary: String
+  status: String
+}
+
+# ─────────────────────────────────────────────
+# Webhook Types
+# ─────────────────────────────────────────────
+
+"""A registered webhook endpoint."""
+type Webhook {
+  id: ID!
+  url: URL!
+  active: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  events: [WebhookEvent!]!
+  signingSecret: String
+}
+
+"""An event type that triggers webhook delivery."""
+type WebhookEvent {
+  id: ID!
+  webhookId: ID!
+  eventType: String!
+  enabled: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Auth Types
+# ─────────────────────────────────────────────
+
+"""An API key for authenticating requests."""
+type APIKey {
+  id: ID!
+  name: String
+  keyPrefix: String!
+  createdAt: DateTime!
+  lastUsedAt: DateTime
+  scopes: [String!]!
+  active: Boolean!
+}
+
+"""An OAuth access token."""
+type Token {
+  accessToken: String!
+  tokenType: String!
+  expiresIn: Int
+  refreshToken: String
+  scope: String
+  createdAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Root Query
+# ─────────────────────────────────────────────
+
+type Query {
+  "Retrieve a single contact by ID."
+  contact(id: ID!): Contact
+
+  "Search contacts using filter criteria."
+  searchContacts(filter: SearchFilter!): ContactResults!
+
+  "Retrieve a single organization by ID."
+  organization(id: ID!): Organization
+
+  "Search organizations using filter criteria."
+  searchOrganizations(filter: SearchFilter!): OrganizationResults!
+
+  "List sequences with optional filters."
+  sequences(active: Boolean, archived: Boolean, page: Int, perPage: Int): [Sequence!]!
+
+  "Retrieve a single sequence by ID."
+  sequence(id: ID!): Sequence
+
+  "List tasks with optional filters."
+  tasks(status: TaskStatus, type: TaskType, userId: ID, page: Int, perPage: Int): [Task!]!
+
+  "Retrieve a single task by ID."
+  task(id: ID!): Task
+
+  "List opportunities."
+  opportunities(accountId: ID, ownerId: ID, page: Int, perPage: Int): [Opportunity!]!
+
+  "Retrieve a single opportunity by ID."
+  opportunity(id: ID!): Opportunity
+
+  "List accounts."
+  accounts(page: Int, perPage: Int): [Account!]!
+
+  "Retrieve a single account by ID."
+  account(id: ID!): Account
+
+  "List deals."
+  deals(stage: String, ownerId: ID, page: Int, perPage: Int): [Deal!]!
+
+  "Retrieve a single deal by ID."
+  deal(id: ID!): Deal
+
+  "List deal stages."
+  dealStages: [DealStage!]!
+
+  "List users in the organization."
+  users(teamId: ID, page: Int, perPage: Int): [User!]!
+
+  "Retrieve the current authenticated user."
+  me: User!
+
+  "List teams."
+  teams(page: Int, perPage: Int): [Team!]!
+
+  "Retrieve a single team by ID."
+  team(id: ID!): Team
+
+  "List email templates."
+  emailerTemplates(archived: Boolean, page: Int, perPage: Int): [EmailerTemplate!]!
+
+  "Retrieve a single email template by ID."
+  emailerTemplate(id: ID!): EmailerTemplate
+
+  "List labels."
+  labels(type: String): [Label!]!
+
+  "List saved filters."
+  filters(type: String): [Filter!]!
+
+  "Enrich a contact by email or LinkedIn URL."
+  enrichContact(email: EmailAddress, linkedinUrl: URL): Enrichment
+
+  "Enrich an organization by domain."
+  enrichOrganization(domain: String!): Enrichment
+
+  "Verify an email address."
+  verifyEmail(email: EmailAddress!): EmailVerification!
+
+  "Check status of a bulk enrichment job."
+  bulkEnrichment(id: ID!): BulkEnrichment
+
+  "List meetings."
+  meetings(contactId: ID, userId: ID, page: Int, perPage: Int): [Meeting!]!
+
+  "List registered webhooks."
+  webhooks: [Webhook!]!
+
+  "List API keys."
+  apiKeys: [APIKey!]!
+}
+
+# ─────────────────────────────────────────────
+# Root Mutation
+# ─────────────────────────────────────────────
+
+type Mutation {
+  "Create a new contact."
+  createContact(input: JSON!): Contact!
+
+  "Update an existing contact."
+  updateContact(id: ID!, input: JSON!): Contact!
+
+  "Delete a contact."
+  deleteContact(id: ID!): Boolean!
+
+  "Create a new account."
+  createAccount(input: JSON!): Account!
+
+  "Update an existing account."
+  updateAccount(id: ID!, input: JSON!): Account!
+
+  "Create a new opportunity."
+  createOpportunity(input: JSON!): Opportunity!
+
+  "Update an existing opportunity."
+  updateOpportunity(id: ID!, input: JSON!): Opportunity!
+
+  "Create a new deal."
+  createDeal(input: JSON!): Deal!
+
+  "Update a deal."
+  updateDeal(id: ID!, input: JSON!): Deal!
+
+  "Create a new sequence."
+  createSequence(input: JSON!): Sequence!
+
+  "Update a sequence."
+  updateSequence(id: ID!, input: JSON!): Sequence!
+
+  "Enroll a contact in a sequence."
+  enrollContactInSequence(contactId: ID!, sequenceId: ID!): SequenceContact!
+
+  "Remove a contact from a sequence."
+  unenrollContactFromSequence(contactId: ID!, sequenceId: ID!): Boolean!
+
+  "Create a new task."
+  createTask(input: JSON!): Task!
+
+  "Update a task."
+  updateTask(id: ID!, input: JSON!): Task!
+
+  "Complete a task."
+  completeTask(id: ID!): Task!
+
+  "Skip a task."
+  skipTask(id: ID!, reason: String): Task!
+
+  "Create an email template."
+  createEmailerTemplate(input: JSON!): EmailerTemplate!
+
+  "Update an email template."
+  updateEmailerTemplate(id: ID!, input: JSON!): EmailerTemplate!
+
+  "Delete an email template."
+  deleteEmailerTemplate(id: ID!): Boolean!
+
+  "Create a label."
+  createLabel(name: String!, color: String): Label!
+
+  "Delete a label."
+  deleteLabel(id: ID!): Boolean!
+
+  "Start a bulk contact enrichment job."
+  startBulkEnrichment(records: [JSON!]!, fields: [String!]): BulkEnrichment!
+
+  "Register a webhook endpoint."
+  createWebhook(url: URL!, events: [String!]!): Webhook!
+
+  "Update a webhook."
+  updateWebhook(id: ID!, url: URL, events: [String!], active: Boolean): Webhook!
+
+  "Delete a webhook."
+  deleteWebhook(id: ID!): Boolean!
+
+  "Create an API key."
+  createAPIKey(name: String, scopes: [String!]): APIKey!
+
+  "Revoke an API key."
+  revokeAPIKey(id: ID!): Boolean!
+}
