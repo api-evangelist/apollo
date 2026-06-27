@@ -154,7 +154,7 @@ common:
     description: Zapier integration for connecting Apollo to hundreds of other applications.
   - name: Slack
     description: Slack integration for deal alerts and notifications.
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.apollo.io/llms.txt
 maintainers:
 - FN: Kin Lane
