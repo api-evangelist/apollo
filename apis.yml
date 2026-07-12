@@ -69,6 +69,10 @@ apis:
   - type: Documentation
     url: https://www.apollo.io/integrations
 common:
+- type: TrustCenter
+  url: security/apollo-trust-center.yml
+- type: DomainSecurity
+  url: security/apollo-domain-security.yml
 - type: GitHubOrganization
   url: https://github.com/apolloio
 - type: Documentation
