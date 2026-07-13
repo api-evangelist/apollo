@@ -2,13 +2,14 @@
   "repo": "apollo",
   "feeds": [
     {
-      "source": "https://www.apollo.io/blog",
-      "feed_url": "",
+      "source": "https://www.apollo.io/pricing",
+      "feed_url": "https://www.apollo.io/pricing",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:24:14Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 23,
   "agent_pulled": "2026-06-27"
 }
