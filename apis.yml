@@ -69,6 +69,8 @@ apis:
   - type: Documentation
     url: https://www.apollo.io/integrations
 common:
+- type: AgenticAccess
+  url: agentic-access/apollo-agentic-access.yml
 - type: TrustCenter
   url: security/apollo-trust-center.yml
 - type: DomainSecurity
