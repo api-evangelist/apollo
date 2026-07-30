@@ -6,7 +6,19 @@ description: Apollo.io is an AI-powered B2B sales intelligence and engagement pl
   qualify inbound leads, enrich data, and close deals faster with AI-powered workflows
   and conversation intelligence.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium · Requires approval
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apollo.png
 tags:
 - AI
 - B2B Sales
@@ -20,25 +32,29 @@ created: '2026-03-25'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: apollo:apollo-rest-api
-  name: Apollo REST API
-  description: Apollo.io's REST API provides programmatic access to Apollo's B2B data
-    platform with 230M+ verified contacts and 30M+ companies. The API supports people
-    enrichment, organization enrichment, people search, organization search, accounts
-    and contacts management, deals, sequences, tasks, analytics reporting, and calls
-    management. Authentication via API keys (direct access) or OAuth 2.0 (partner
-    integrations).
+- aid: apollo:apollo-client
+  name: Apollo Client
+  description: >-
+    Apollo Client provides libraries and integrations for connecting to Apollo.io's sales platform from
+    external applications and CRM systems.
+  humanURL: https://www.apollo.io/integrations
+  tags:
+  - CRM
+  - Integrations
+  - Salesforce
+  - SDKs
+  properties:
+  - type: Documentation
+    url: https://www.apollo.io/integrations
+- aid: apollo:apollo-accounts-api
+  name: Apollo Accounts API
+  description: The Accounts API from Apollo — 3 operation(s) for accounts.
   humanURL: https://www.apollo.io/
   tags:
-  - Analytics
-  - CRM
-  - Data Enrichment
-  - Organization Search
-  - People Search
-  - REST
-  - Sales Intelligence
-  - Sequences
+  - Accounts
   properties:
+  - type: OpenAPI
+    url: openapi/apollo-accounts-api-openapi.yml
   - type: Documentation
     url: https://docs.apollo.io/
   - type: GettingStarted
@@ -51,23 +67,307 @@ apis:
     url: https://docs.apollo.io/reference/rate-limits
   - type: Tutorials
     url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
-  - url: openapi/apollo-openapi.yml
-    type: OpenAPI
-  - url: graphql/apollo-graphql.md
-    type: GraphQL
-- aid: apollo:apollo-client
-  name: Apollo Client
-  description: Apollo Client provides libraries and integrations for connecting to
-    Apollo.io's sales platform from external applications and CRM systems.
-  humanURL: https://www.apollo.io/integrations
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-contacts-api
+  name: Apollo Contacts API
+  description: The Contacts API from Apollo — 3 operation(s) for contacts.
+  humanURL: https://www.apollo.io/
   tags:
-  - CRM
-  - Integrations
-  - Salesforce
-  - SDKs
+  - Contacts
   properties:
+  - type: OpenAPI
+    url: openapi/apollo-contacts-api-openapi.yml
   - type: Documentation
-    url: https://www.apollo.io/integrations
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-email-accounts-api
+  name: Apollo Email Accounts API
+  description: The Email Accounts API from Apollo — 1 operation(s) for email accounts.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Email Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-email-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-emailer-campaigns-api
+  name: Apollo Emailer Campaigns API
+  description: The Emailer Campaigns API from Apollo — 3 operation(s) for emailer campaigns.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Emailer Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-emailer-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-mixed-companies-api
+  name: Apollo Mixed Companies API
+  description: The Mixed Companies API from Apollo — 1 operation(s) for mixed companies.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Mixed Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-mixed-companies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-mixed-people-api
+  name: Apollo Mixed People API
+  description: The Mixed People API from Apollo — 1 operation(s) for mixed people.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Mixed People
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-mixed-people-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-opportunities-api
+  name: Apollo Opportunities API
+  description: The Opportunities API from Apollo — 3 operation(s) for opportunities.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Opportunities
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-opportunities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-organizations-api
+  name: Apollo Organizations API
+  description: The Organizations API from Apollo — 2 operation(s) for organizations.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-people-api
+  name: Apollo People API
+  description: The People API from Apollo — 2 operation(s) for people.
+  humanURL: https://www.apollo.io/
+  tags:
+  - People
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-people-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-phone-calls-api
+  name: Apollo Phone Calls API
+  description: The Phone Calls API from Apollo — 3 operation(s) for phone calls.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Phone Calls
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-phone-calls-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-sync-report-api
+  name: Apollo Sync Report API
+  description: The Sync Report API from Apollo — 1 operation(s) for sync report.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Sync Report
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-sync-report-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-tasks-api
+  name: Apollo Tasks API
+  description: The Tasks API from Apollo — 3 operation(s) for tasks.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-usage-stats-api
+  name: Apollo Usage Stats API
+  description: The Usage Stats API from Apollo — 1 operation(s) for usage stats.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Usage Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-usage-stats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
+- aid: apollo:apollo-users-api
+  name: Apollo Users API
+  description: The Users API from Apollo — 1 operation(s) for users.
+  humanURL: https://www.apollo.io/
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/apollo-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apollo.io/
+  - type: GettingStarted
+    url: https://docs.apollo.io/docs
+  - type: APIReference
+    url: https://docs.apollo.io/reference
+  - type: Authentication
+    url: https://docs.apollo.io/reference/authentication
+  - type: RateLimits
+    url: https://docs.apollo.io/reference/rate-limits
+  - type: Tutorials
+    url: https://docs.apollo.io/docs/overview-apollo-api-tutorials
+  - type: GraphQL
+    url: graphql/apollo-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/apollo-agentic-access.yml
