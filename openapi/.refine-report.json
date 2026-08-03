@@ -1,0 +1,40 @@
+{
+  "provider": "apollo",
+  "sources": [
+    "apollo-accounts-api-openapi.yml",
+    "apollo-contacts-api-openapi.yml",
+    "apollo-email-accounts-api-openapi.yml",
+    "apollo-emailer-campaigns-api-openapi.yml",
+    "apollo-mixed-companies-api-openapi.yml",
+    "apollo-mixed-people-api-openapi.yml",
+    "apollo-opportunities-api-openapi.yml",
+    "apollo-organizations-api-openapi.yml",
+    "apollo-people-api-openapi.yml",
+    "apollo-phone-calls-api-openapi.yml",
+    "apollo-sync-report-api-openapi.yml",
+    "apollo-tasks-api-openapi.yml",
+    "apollo-usage-stats-api-openapi.yml",
+    "apollo-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "apollo-accounts-api-openapi.yml",
+    "apollo-contacts-api-openapi.yml",
+    "apollo-email-accounts-api-openapi.yml",
+    "apollo-emailer-campaigns-api-openapi.yml",
+    "apollo-mixed-companies-api-openapi.yml",
+    "apollo-mixed-people-api-openapi.yml",
+    "apollo-opportunities-api-openapi.yml",
+    "apollo-organizations-api-openapi.yml",
+    "apollo-people-api-openapi.yml",
+    "apollo-phone-calls-api-openapi.yml",
+    "apollo-sync-report-api-openapi.yml",
+    "apollo-tasks-api-openapi.yml",
+    "apollo-usage-stats-api-openapi.yml",
+    "apollo-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
