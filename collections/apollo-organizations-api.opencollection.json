@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apollo.io Accounts Organizations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Organization enrichment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apollo.io/v1/organizations/enrich"
+          },
+          "docs": "Organization enrichment"
+        },
+        {
+          "info": {
+            "name": "Organization job postings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apollo.io/v1/organizations/job_postings"
+          },
+          "docs": "Organization job postings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

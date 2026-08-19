@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apollo.io Accounts Mixed Companies API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mixed Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Organization search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apollo.io/v1/mixed_companies/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Organization search"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

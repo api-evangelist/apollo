@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apollo.io Accounts Phone Calls API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Phone Calls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create call records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apollo.io/v1/phone_calls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create call records"
+        },
+        {
+          "info": {
+            "name": "Search for calls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apollo.io/v1/phone_calls/search"
+          },
+          "docs": "Search for calls"
+        },
+        {
+          "info": {
+            "name": "Update call records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.apollo.io/v1/phone_calls/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update call records"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

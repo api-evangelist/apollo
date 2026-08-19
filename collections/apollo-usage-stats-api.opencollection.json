@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apollo.io Accounts Usage Stats API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Usage Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View API usage stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apollo.io/v1/usage_stats/api_usage_stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View API usage stats"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
