@@ -20,6 +20,14 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apollo.png
 tags:
+- Artificial Intelligence
+- B2B Sales
+- CRM
+- Data Enrichment
+- Lead Generation
+- Sales Intelligence
+- Sales Platform
+tags_raw:
 - AI
 - B2B Sales
 - CRM
@@ -40,6 +48,11 @@ apis:
   humanURL: https://www.apollo.io/integrations
   tags:
   - CRM
+  - Integration
+  - Salesforce
+  - SDK
+  tags_raw:
+  - CRM
   - Integrations
   - Salesforce
   - SDKs
@@ -51,6 +64,8 @@ apis:
   description: The Accounts API from Apollo — 3 operation(s) for accounts.
   humanURL: https://www.apollo.io/
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -212,6 +227,8 @@ apis:
   description: The Organizations API from Apollo — 2 operation(s) for organizations.
   humanURL: https://www.apollo.io/
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -304,6 +321,8 @@ apis:
   description: The Tasks API from Apollo — 3 operation(s) for tasks.
   humanURL: https://www.apollo.io/
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -350,6 +369,8 @@ apis:
   description: The Users API from Apollo — 1 operation(s) for users.
   humanURL: https://www.apollo.io/
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
