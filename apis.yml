@@ -6,6 +6,18 @@ description: Apollo.io is an AI-powered B2B sales intelligence and engagement pl
   qualify inbound leads, enrich data, and close deals faster with AI-powered workflows
   and conversation intelligence.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: approval
