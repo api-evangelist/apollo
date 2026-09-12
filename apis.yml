@@ -402,6 +402,8 @@ apis:
   - type: GraphQL
     url: graphql/apollo-graphql.md
 common:
+- type: Website
+  url: https://www.apollo.io/
 - type: AgenticAccess
   url: agentic-access/apollo-agentic-access.yml
 - type: TrustCenter
