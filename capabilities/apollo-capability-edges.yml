@@ -1,0 +1,43 @@
+slug: apollo
+provider: Apollo
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Opportunities
+  spec_file: apollo-opportunities-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.92
+  evidence: POST /opportunities  createDeal  Create deal; GET /opportunities/search  listDeals  List all
+    deals
+  reason: Deal creation, listing and viewing is squarely opportunity and pipeline management in a sales
+    platform.
+- tag: Contacts
+  spec_file: apollo-contacts-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.72
+  evidence: POST /contacts 'Create a contact'; PATCH /contacts/{id} 'Update a contact'
+  reason: Create/update/bulk-create of contact records is maintenance of customer/prospect master data
+    in the CRM.
+- tag: Usage Stats
+  spec_file: apollo-usage-stats-api-openapi.yml
+  capability_id: BC-4270.50
+  capability_id_l1: BC-4270
+  capability_name: API Consumption Governance
+  confidence: 0.7
+  evidence: POST /usage_stats/api_usage_stats  viewApiUsageStats  View API usage stats
+  reason: Exposes consumption/quota statistics for the vendor's public API, which is API consumption governance
+    rather than any business-domain capability.

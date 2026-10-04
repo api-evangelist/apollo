@@ -405,6 +405,9 @@ apis:
   - type: GraphQL
     url: graphql/apollo-graphql.md
 common:
+- type: CapabilityMap
+  url: capabilities/apollo-capability-edges.yml
+  name: Apollo Business Capability Map
 - type: Website
   url: https://www.apollo.io/
 - type: AgenticAccess
