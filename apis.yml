@@ -405,6 +405,8 @@ apis:
   - type: GraphQL
     url: graphql/apollo-graphql.md
 common:
+- type: Plans
+  url: plans/apollo-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/apollo-capability-edges.yml
   name: Apollo Business Capability Map
